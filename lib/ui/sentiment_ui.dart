@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class SentimentAnalyzer extends StatefulWidget {
@@ -10,6 +11,7 @@ class SentimentAnalyzer extends StatefulWidget {
 class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
   final TextEditingController _textController = TextEditingController();
   String _sentiment = "";
+  String _result_image = "";
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,33 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                       primary: Colors.white,
                       textStyle: const TextStyle(fontSize: 24),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      var dio = Dio();
+                      var response = await dio.post(
+                        "https://flutter-service.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/sentiment?opinionMining=true",
+                        data: {
+                          "documents": [
+                            {
+                              "language": "pt",
+                              "id": "1",
+                              "text": _textController.text,
+                            },
+                          ],
+                        },
+                        options: Options(
+                          headers: {
+                            "Ocp-Apim-Subscription-Key":
+                                "67260ed3ffb4468ab513787ca491f629",
+                          },
+                        ),
+                      );
+                      setState(
+                        () {
+                          _sentiment =
+                              response.data["documents"][0]["sentiment"];
+                        },
+                      );
+                    },
                     child: const Text('Analizar'),
                   ),
                 ],
@@ -75,6 +103,13 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
               "Resultado: $_sentiment",
               style: const TextStyle(fontSize: 24),
             ),
+          ),
+          Image.asset(
+            'assets/logo_maua.jpg',
+            height: 40,
+            width: 40,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.medium,
           ),
         ],
       ),
