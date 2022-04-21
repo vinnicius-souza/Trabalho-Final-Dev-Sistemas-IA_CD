@@ -7,7 +7,7 @@ de uma frase enviada pelo usuário através da caixa de texto.
 
 Para executar o programa, realize os seguintes passos:
 
-1. Crie um serviço do tipo Language do Azure Cognitive Services;
+1. [Crie um serviço do tipo Language do Azure Cognitive Services](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics);
 2. No arquivo `lib/ui/sentiment_ui.dart`, na linha 16, insira a subscription
 key do serviço Azure;
 
