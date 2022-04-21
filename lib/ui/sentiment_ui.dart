@@ -11,8 +11,9 @@ class SentimentAnalyzer extends StatefulWidget {
 class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
   final TextEditingController _textController = TextEditingController();
   String _sentiment = "";
-  String _result_image = "assets/logo_maua.jpg";
-  String _current_language = "en";
+  String _resultImage = "assets/logo_maua.jpg";
+  String _currentLanguage = "en";
+  static const String _subscriptionKey = "";
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +67,14 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                       textStyle: const TextStyle(fontSize: 24),
                     ),
                     onPressed: () {
-                      if (_current_language == 'en') {
-                        _current_language = 'pt';
+                      if (_currentLanguage == 'en') {
+                        _currentLanguage = 'pt';
                       } else {
-                        _current_language = 'en';
+                        _currentLanguage = 'en';
                       }
                       setState(() {});
                     },
-                    child: Text(_current_language),
+                    child: Text(_currentLanguage),
                   ),
                 ],
               ),
@@ -104,7 +105,7 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                         data: {
                           "documents": [
                             {
-                              "language": _current_language,
+                              "language": _currentLanguage,
                               "id": "1",
                               "text": _textController.text,
                             },
@@ -112,7 +113,7 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                         },
                         options: Options(
                           headers: {
-                            "Ocp-Apim-Subscription-Key": "<chave aqui>",
+                            "Ocp-Apim-Subscription-Key": _subscriptionKey,
                           },
                         ),
                       );
@@ -121,11 +122,11 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                           _sentiment =
                               response.data["documents"][0]["sentiment"];
                           if (_sentiment == "positive") {
-                            _result_image = "assets/happy.jpg";
+                            _resultImage = "assets/happy.jpg";
                           } else if (_sentiment == "neutral") {
-                            _result_image = "assets/neutral.png";
+                            _resultImage = "assets/neutral.png";
                           } else if (_sentiment == "negative") {
-                            _result_image = "assets/sad.webp";
+                            _resultImage = "assets/sad.webp";
                           }
                         },
                       );
@@ -144,7 +145,7 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
             ),
           ),
           Image.asset(
-            _result_image,
+            _resultImage,
             height: 40,
             width: 40,
             fit: BoxFit.contain,
