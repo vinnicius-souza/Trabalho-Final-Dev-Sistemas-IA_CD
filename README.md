@@ -25,4 +25,4 @@ linguagem entre inglês e português;
 ![Tela do programa](/doc/screenshot.png)
 
 
-6. Clique em "Analizar" e veja o resultado!
+6. Clique em "Analisar" e veja o resultado!
