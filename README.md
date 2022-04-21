@@ -12,7 +12,7 @@ Para executar o programa, realize os seguintes passos:
 key do serviço Azure;
 
 
-[Subscription Key aqui](/doc/sub_key.png)
+![Subscription Key aqui](/doc/sub_key.png)
 
 
 3. Execute o comando `flutter pub get` para baixar as dependências;
@@ -22,7 +22,7 @@ o programa;
 linguagem entre inglês e português;
 
 
-[Tela do programa](/doc/screenshot.png)
+![Tela do programa](/doc/screenshot.png)
 
 
 6. Clique em "Analizar" e veja o resultado!
