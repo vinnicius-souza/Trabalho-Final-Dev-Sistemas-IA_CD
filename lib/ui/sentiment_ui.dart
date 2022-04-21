@@ -131,7 +131,7 @@ class _SentimentAnalyzerState extends State<SentimentAnalyzer> {
                         },
                       );
                     },
-                    child: const Text('Analizar'),
+                    child: const Text('Analisar'),
                   ),
                 ],
               ),
