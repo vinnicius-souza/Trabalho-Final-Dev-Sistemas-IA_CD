@@ -2,6 +2,7 @@
 
 Este app usa o Azure Cognitive Service for Language para analizar o sentimento
 de uma frase enviada pelo usuário através da caixa de texto.
+Por: Gabriel Matheus da Silva Santos, 20.84144-2 e Vinnicius Bernacchi de Souza, 21.84441-0
 
 ## Instruções de uso
 
